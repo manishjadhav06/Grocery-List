@@ -22,8 +22,10 @@ const Content = () => {
   ]);
 
   const handleCheck=(id)=>{
-    const listItems =item.map((item)=> item.id === id? {...item, checked : !item.checked} : item);
+    const listItems =item.map((item)=>
+      item.id === id? {...item, checked : !item.checked} : item);
     setItem(listItems);
+    // localStorage.setItem('shoppingList', JSON.stringify(listItems))
   }
 
   // const [name,setName]= useState("Manish");
@@ -48,7 +50,9 @@ const Content = () => {
               checked={item.checked}
             />
             
-          <label>{item.item}</label>
+          <label 
+            onDoubleClick={()=>handleCheck(item.id)}
+          >{item.item}</label>
           <FaTrashAlt 
             role="button"
             tabIndex="0"
