@@ -19,11 +19,6 @@ const Content = ({item, handleCheck, handleDelete}) => {
       <ItemList item={item} handleCheck={handleCheck} handleDelete={handleDelete}/>
       
 
-
-
-
-
-
       {/* <p onClick={handleNameChange}>
         Hello {name}!
       </p>
