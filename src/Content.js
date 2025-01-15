@@ -1,32 +1,8 @@
-import React, { use, useState } from 'react'
+import React from 'react'
 import {FaTrashAlt} from 'react-icons/fa'
 
-const Content = () => {
+const Content = ({item, handleCheck, handleDelete}) => {
 
-  const [item, setItem]= useState([
-    {
-      id:1,
-      checked: false,
-      item: "Sugar"
-    },
-    {
-      id:2,
-      checked: false,
-      item: "Tea"
-    },
-    {
-      id:3,
-      checked: false,
-      item: "Milk"
-    },
-  ]);
-
-  const handleCheck=(id)=>{
-    const listItems =item.map((item)=>
-      item.id === id? {...item, checked : !item.checked} : item);
-    setItem(listItems);
-    // localStorage.setItem('shoppingList', JSON.stringify(listItems))
-  }
 
   // const [name,setName]= useState("Manish");
 
@@ -54,6 +30,7 @@ const Content = () => {
             onDoubleClick={()=>handleCheck(item.id)}
           >{item.item}</label>
           <FaTrashAlt 
+            onClick={()=>handleDelete(item.id)}
             role="button"
             tabIndex="0"
           />
