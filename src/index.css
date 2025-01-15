@@ -15,6 +15,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(83, 123, 175);
 }
 
 .App {
@@ -47,6 +48,7 @@ main {
   justify-content: center;
   align-items: center;
   overflow-y: auto;
+  background-color: rgb(81, 80, 151);
 }
 
 footer {
