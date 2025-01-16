@@ -3,7 +3,7 @@ import Header from './Header';
 import AddItem from './AddItem';
 import Content from './Content';
 import Footer from './Footer';
-import { use, useState } from 'react';
+import { useState } from 'react';
 
 
 function App() {
@@ -40,15 +40,16 @@ function App() {
   }
 
   const handleSubmit=(e)=>{
-    
-  }
+    e.preventDefault();
+    console.log('submitted');
+    }
 
 
   return (
     <div className="App">
       <Header title="Groceries List"/>
 
-      <AddItem/>
+      <AddItem newItem={newItem} setNewItem={setNewItem} handleSubmit={handleSubmit}/>
 
       <Content item={item} handleCheck={handleCheck} handleDelete={handleDelete}/>
 
