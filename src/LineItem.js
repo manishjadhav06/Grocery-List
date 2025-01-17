@@ -11,7 +11,7 @@ function LineItem({ item, handleCheck, handleDelete }) {
                 checked={item.checked}
             />
 
-            <label>{item.newItem}</label>
+            <label>{item.itemName}</label>
 
             <FaTrashAlt
                 onClick={() => handleDelete(item.id)}

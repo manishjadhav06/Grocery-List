@@ -11,30 +11,30 @@ function App() {
     {
       id:1,
       checked: false,
-      newItem: "Sugar"
+      itemName: "Sugar"
     },
     {
       id:2,
       checked: false,
-      newItem: "Tea"
+      itemName: "Tea"
     },
     {
       id:3,
       checked: false,
-      newItem: "Milk"
+      itemName: "Milk"
     },
   ]);
 
   const setSave=(newItems)=>{
     setItem(newItems);
-    // localStorage.setItem('shoppingList', JSON.stringify(newItems));
+    localStorage.setItem('shoppingList', JSON.stringify(newItems));
   }
 
   const [newItem, setNewItem] = useState('');
 
-  const addItem =(newItem)=>{
+  const addItem =(itemName)=>{
     const id= item.length ? item[item.length -1].id + 1 : 1;
-    const myNewItem ={id, checked: false, newItem};
+    const myNewItem ={id, checked: false, itemName};
     const listItems =[...item, myNewItem];
     console.log(listItems);
     setSave(listItems);
