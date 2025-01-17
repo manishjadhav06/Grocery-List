@@ -11,27 +11,48 @@ function App() {
     {
       id:1,
       checked: false,
-      item: "Sugar"
+      newItem: "Sugar"
     },
     {
       id:2,
       checked: false,
-      item: "Tea"
+      newItem: "Tea"
     },
     {
       id:3,
       checked: false,
-      item: "Milk"
+      newItem: "Milk"
     },
   ]);
 
+  const setSave=(newItems)=>{
+    setItem(newItems);
+    // localStorage.setItem('shoppingList', JSON.stringify(newItems));
+  }
+
   const [newItem, setNewItem] = useState('');
+
+  const addItem =(newItem)=>{
+    const id= item.length ? item[item.length -1].id + 1 : 1;
+    const myNewItem ={id, checked: false, newItem};
+    const listItems =[...item, myNewItem];
+    console.log(listItems);
+    setSave(listItems);
+  }
+
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    if(!newItem) return;
+    addItem(newItem);
+    console.log(newItem);
+    setNewItem('');
+    }
+
 
   const handleCheck=(id)=>{
     const listItems =item.map((item)=>
       item.id === id? {...item, checked : !item.checked} : item);
-    setItem(listItems);
-    // localStorage.setItem('shoppingList', JSON.stringify(listItems))
+    setSave(listItems);
   }
   const handleDelete =(id)=>{
     const listItems=item.filter((item)=>
@@ -39,10 +60,6 @@ function App() {
     setItem(listItems);
   }
 
-  const handleSubmit=(e)=>{
-    e.preventDefault();
-    console.log('submitted');
-    }
 
 
   return (

@@ -11,9 +11,7 @@ function LineItem({ item, handleCheck, handleDelete }) {
                 checked={item.checked}
             />
 
-            <label
-                onDoubleClick={() => handleCheck(item.id)}
-            >{item.item}</label>
+            <label>{item.newItem}</label>
 
             <FaTrashAlt
                 onClick={() => handleDelete(item.id)}
