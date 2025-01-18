@@ -7,23 +7,7 @@ import { useState } from 'react';
 
 
 function App() {
-  const [item, setItem]= useState([
-    {
-      id:1,
-      checked: false,
-      itemName: "Sugar"
-    },
-    {
-      id:2,
-      checked: false,
-      itemName: "Tea"
-    },
-    {
-      id:3,
-      checked: false,
-      itemName: "Milk"
-    },
-  ]);
+  const [item, setItem]= useState(JSON.parse(localStorage.getItem('shoppingList')));
 
   const setSave=(newItems)=>{
     setItem(newItems);
@@ -58,6 +42,7 @@ function App() {
     const listItems=item.filter((item)=>
     item.id !== id);
     setItem(listItems);
+    setSave(listItems);
   }
 
 
