@@ -7,7 +7,25 @@ import { useState } from 'react';
 
 
 function App() {
-  const [item, setItem]= useState(JSON.parse(localStorage.getItem('shoppingList')));
+  const [item, setItem]= useState(JSON.parse(localStorage.getItem('shoppingList'))
+  //   [
+  //   {
+  //     id:1,
+  //     checked: false,
+  //     itemName: "Sugar"
+  //   },
+  //   {
+  //     id:2,
+  //     checked: false,
+  //     itemName: "Tea"
+  //   },
+  //   {
+  //     id:3,
+  //     checked: false,
+  //     itemName: "Milk"
+  //   },
+  // ]
+);
 
   const setSave=(newItems)=>{
     setItem(newItems);
@@ -17,22 +35,21 @@ function App() {
   const [newItem, setNewItem] = useState('');
 
   const addItem =(itemName)=>{
-    const id= item.length ? item[item.length -1].id + 1 : 1;
+    const id = item.length ? item[item.length -1].id + 1 : 1;
     const myNewItem ={id, checked: false, itemName};
     const listItems =[...item, myNewItem];
     console.log(listItems);
     setSave(listItems);
   }
-
+  
   const handleSubmit=(e)=>{
     e.preventDefault();
     if(!newItem) return;
     addItem(newItem);
-    console.log(newItem);
     setNewItem('');
-    }
-
-
+  }
+  
+  
   const handleCheck=(id)=>{
     const listItems =item.map((item)=>
       item.id === id? {...item, checked : !item.checked} : item);
@@ -40,7 +57,7 @@ function App() {
   }
   const handleDelete =(id)=>{
     const listItems=item.filter((item)=>
-    item.id !== id);
+      item.id !== id);
     setItem(listItems);
     setSave(listItems);
   }
