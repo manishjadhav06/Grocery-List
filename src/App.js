@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './Header';
+import SearchItem from './SearchItem';
 import AddItem from './AddItem';
 import Content from './Content';
 import Footer from './Footer';
@@ -27,12 +28,13 @@ function App() {
   // ]
 );
 
+const [search, setSearch]=useState('');
+
+const [newItem, setNewItem] = useState('');
   const setSave=(newItems)=>{
     setItem(newItems);
     localStorage.setItem('shoppingList', JSON.stringify(newItems));
   }
-
-  const [newItem, setNewItem] = useState('');
 
   const addItem =(itemName)=>{
     const id = item.length ? item[item.length -1].id + 1 : 1;
@@ -70,7 +72,9 @@ function App() {
 
       <AddItem newItem={newItem} setNewItem={setNewItem} handleSubmit={handleSubmit}/>
 
-      <Content item={item} handleCheck={handleCheck} handleDelete={handleDelete}/>
+      <SearchItem  search={search} setSearch={setSearch} />
+
+      <Content item={item.filter(item=>((item.itemName).toLowerCase()).includes(search.toLowerCase()))} handleCheck={handleCheck} handleDelete={handleDelete}/>
 
       <Footer length={item.length}/>
     </div>
